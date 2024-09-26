@@ -21,8 +21,10 @@ Before you begin, ensure you have met the following requirements:
 2. Set up the environment variables:
     Create a `.env` file in the root of the project and add the following:
     ```env
-    AMQP_ADDR=amqp://127.0.0.1:5672/%2f
-    MONGODB_URI=mongodb://your_username:your_password@localhost:27017
+    DATABASE_URL=postgres://<postgres_username>:<postgres_password>@127.19.0.2:5432/<database_name>
+    HOST=127.0.0.1
+    PORT=8080
+    LOG_LEVEL=INFO
     ```
 
     Or copy the file `.env.example` to `.env` and change the <your_username> and <your_password>:
@@ -34,25 +36,6 @@ Before you begin, ensure you have met the following requirements:
     ```sh
     cargo build
     ```
-
-## Running RabbitMQ and MongoDB with Docker
-To run RabbitMQ and MongoDB using Docker, you can use the following commands:
-
-1. **RabbitMQ**:
-    ```sh
-    docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
-    ```
-
-2. **MongoDB**:
-    ```sh
-    docker run -d \
-        --name mongodb \
-        -e MONGO_INITDB_ROOT_USERNAME=<your_username> \
-        -e MONGO_INITDB_ROOT_PASSWORD=<your_password> \
-        -p 27017:27017 \
-        mongo
-    ```
-
 
 ## Usage
 To run the project, use the following command: cargo run
